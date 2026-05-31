@@ -35,10 +35,12 @@ const KNOWN_COMMAND_DESCRIPTIONS: Record<string, string> = {
   plan: "Enable plan mode or view the current session plan",
   "pr-comments": "View pull request comments",
   "release-notes": "View release notes",
+  "reload-skills": "Re-scan skill directories without restarting the session",
   rename: "Rename the current conversation",
   resume: "Resume a previous conversation",
   review: "Review a pull request",
   "security-review": "Review code for security issues",
+  simplify: "Review code for cleanup (reuse, simplification, efficiency) and apply fixes",
   skills: "List available skills",
   status: "Show Claude Code status and version info",
   theme: "Change the theme",
@@ -492,6 +494,7 @@ const COMMAND_CATEGORY_MAP: Record<string, SlashCategory> = {
   review: "coding",
   "security-review": "coding",
   "code-review": "coding",
+  simplify: "coding",
   plan: "coding",
   init: "coding",
   "pr-comments": "coding",
@@ -516,6 +519,7 @@ const COMMAND_CATEGORY_MAP: Record<string, SlashCategory> = {
   plugin: "config",
   ide: "config",
   "add-dir": "config",
+  "reload-skills": "config",
   // Coding (continued)
   "team-onboarding": "coding",
   // Help
