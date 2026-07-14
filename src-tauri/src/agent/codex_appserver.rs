@@ -407,12 +407,16 @@ impl SessionProtocol for CodexAppServer {
             Some(t) => t.clone(),
             None => return vec![],
         };
+        let turn_id = match &self.active_turn_id {
+            Some(t) => t.clone(),
+            None => return vec![],
+        };
         let id = self.next_id();
         vec![json!({
             "jsonrpc": "2.0",
             "id": id,
             "method": "turn/interrupt",
-            "params": { "threadId": thread_id }
+            "params": { "threadId": thread_id, "turnId": turn_id }
         })]
     }
 
@@ -2655,9 +2659,20 @@ mod tests {
     #[test]
     fn interrupt_after_ready() {
         let mut s = ready_server();
+        s.parse_line(
+            "r",
+            r#"{"method":"turn/started","params":{"turn":{"id":"turn-42"}}}"#,
+        );
         let msgs = s.frame_interrupt();
         assert_eq!(msgs[0]["method"], "turn/interrupt");
         assert_eq!(msgs[0]["params"]["threadId"], "th-123");
+        assert_eq!(msgs[0]["params"]["turnId"], "turn-42");
+    }
+
+    #[test]
+    fn interrupt_without_active_turn_is_dropped() {
+        let mut s = ready_server();
+        assert!(s.frame_interrupt().is_empty());
     }
 
     // ── Wave-3: data-returning frame methods + response correlation ──────────────────────
