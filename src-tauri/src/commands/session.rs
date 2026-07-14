@@ -1992,9 +1992,11 @@ async fn spawn_codex_appserver_process(
     }
     // Provider API key (env_key=api_key) — the exec path sets this in chat.rs's run_agent, but
     // the app-server actor path has no such hook, so inject it here.
-    if let Some(p) = &settings.codex_provider {
-        if let Some((k, v)) = crate::agent::spawn::codex_provider_env(p) {
-            cmd.env(k, v);
+    if !launch.managed_by_aiflow {
+        if let Some(p) = &settings.codex_provider {
+            if let Some((k, v)) = crate::agent::spawn::codex_provider_env(p) {
+                cmd.env(k, v);
+            }
         }
     }
 

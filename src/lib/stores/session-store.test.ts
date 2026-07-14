@@ -82,6 +82,33 @@ function makeRun(id: string, overrides: Record<string, unknown> = {}) {
   };
 }
 
+describe("SessionStore new Codex session", () => {
+  it("passes the UI-selected model when creating the run", async () => {
+    const store = new SessionStore();
+    store.agent = "codex";
+    store.model = "gpt-5.5";
+    vi.mocked(api.startRun).mockResolvedValue(
+      makeRun("codex-run", {
+        agent: "codex",
+        execution_path: "session_actor",
+      }) as never,
+    );
+    vi.mocked(api.startSession).mockResolvedValue(undefined);
+
+    await store.startSession("Reply with OK", "/tmp/project", []);
+
+    expect(api.startRun).toHaveBeenCalledWith(
+      "Reply with OK",
+      "/tmp/project",
+      "codex",
+      "gpt-5.5",
+      undefined,
+      undefined,
+      undefined,
+    );
+  });
+});
+
 describe("SessionStore reducer", () => {
   let store: SessionStore;
   let warnSpy: ReturnType<typeof vi.spyOn>;

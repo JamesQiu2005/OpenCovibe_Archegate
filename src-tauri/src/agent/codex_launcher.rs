@@ -18,9 +18,26 @@ pub fn build_codex_command(tool_args: Vec<String>) -> CodexCommand {
 fn build_codex_command_for(
     aiflow_path: Option<String>,
     codex_path: Option<String>,
-    tool_args: Vec<String>,
+    mut tool_args: Vec<String>,
 ) -> CodexCommand {
     if let Some(program) = aiflow_path {
+        // AIFlow injects its own Codex home, gateway, credentials, and model provider.
+        // Forwarding OpenCovibe's `-c` overrides can make Codex fall back to the local
+        // provider configuration (and api.openai.com) instead of the managed gateway.
+        let mut filtered = Vec::with_capacity(tool_args.len());
+        let mut args = tool_args.into_iter();
+        while let Some(arg) = args.next() {
+            if arg == "-c" || arg == "--config" {
+                let _ = args.next();
+                continue;
+            }
+            if arg.starts_with("--config=") {
+                continue;
+            }
+            filtered.push(arg);
+        }
+        tool_args = filtered;
+
         let mut args = vec!["codex".to_string()];
         args.extend(tool_args);
         return CodexCommand {
@@ -58,6 +75,33 @@ mod tests {
     }
 
     #[test]
+    fn aiflow_launcher_drops_app_managed_config_overrides() {
+        let command = build_codex_command_for(
+            Some("/usr/local/bin/aiflow".into()),
+            Some("/usr/local/bin/codex".into()),
+            vec![
+                "app-server".into(),
+                "--enable".into(),
+                "default_mode_request_user_input".into(),
+                "-c".into(),
+                "suppress_unstable_features_warning=true".into(),
+                "-c".into(),
+                "model_provider=opencovibe".into(),
+            ],
+        );
+
+        assert_eq!(
+            command.args,
+            vec![
+                "codex",
+                "app-server",
+                "--enable",
+                "default_mode_request_user_input"
+            ]
+        );
+    }
+
+    #[test]
     fn direct_codex_is_the_fallback_when_aiflow_is_unavailable() {
         let command = build_codex_command_for(
             None,
@@ -68,5 +112,27 @@ mod tests {
         assert_eq!(command.program, "/usr/local/bin/codex");
         assert_eq!(command.args, vec!["exec", "--json"]);
         assert!(!command.managed_by_aiflow);
+    }
+
+    #[test]
+    fn direct_codex_keeps_app_managed_config_overrides() {
+        let command = build_codex_command_for(
+            None,
+            Some("/usr/local/bin/codex".into()),
+            vec![
+                "app-server".into(),
+                "-c".into(),
+                "suppress_unstable_features_warning=true".into(),
+            ],
+        );
+
+        assert_eq!(
+            command.args,
+            vec![
+                "app-server",
+                "-c",
+                "suppress_unstable_features_warning=true"
+            ]
+        );
     }
 }

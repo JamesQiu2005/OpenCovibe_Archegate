@@ -2179,8 +2179,10 @@ export class SessionStore {
       // override that and pin Codex to exec.
       const executionPath =
         this.agent === "codex" ? undefined : this.useStreamSession ? "session_actor" : "pipe_exec";
-      // Only pass model for stream-session (Claude); pipe-exec (Codex) doesn't use it
-      const runModel = this.useStreamSession ? this.model || undefined : undefined;
+      // Codex transport is resolved by the backend after startRun, so useStreamSession is
+      // still false here. Preserve the UI selection on the run for app-server thread/start.
+      const runModel =
+        this.agent === "codex" || this.useStreamSession ? this.model || undefined : undefined;
       const run = await api.startRun(
         prompt,
         cwd,
