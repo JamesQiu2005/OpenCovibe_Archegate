@@ -15,6 +15,12 @@ pub fn build_codex_command(tool_args: Vec<String>) -> CodexCommand {
     )
 }
 
+/// AIFlow's Codex launcher supports the one-shot `exec` transport but does not currently
+/// provision credentials for an app-server `turn/start`. Keep managed sessions on `exec`.
+pub fn aiflow_available() -> bool {
+    claude_stream::which_binary("aiflow").is_some()
+}
+
 fn build_codex_command_for(
     aiflow_path: Option<String>,
     codex_path: Option<String>,
