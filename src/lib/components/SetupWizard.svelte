@@ -2,7 +2,6 @@
   import {
     checkAgentCli,
     checkAuthStatus,
-    checkCodexAuth,
     detectInstallMethods,
     runClaudeLogin,
     runCodexLogin,
@@ -64,16 +63,8 @@
     dbg("wizard", "starting initial check", { targetAgent });
     try {
       const cliResult = await checkAgentCli(targetAgent);
-      let authed = false;
-      if (targetAgent === "codex") {
-        // Codex auth lives in `codex login status`, not the Anthropic-specific auth_mode.
-        try {
-          authed = (await checkCodexAuth()).logged_in;
-        } catch (e) {
-          dbgWarn("wizard", "checkCodexAuth failed", e);
-          authed = false;
-        }
-      } else {
+      let authed = targetAgent === "codex";
+      if (targetAgent !== "codex") {
         const a = await checkAuthStatus();
         authed = a.has_oauth || a.has_api_key;
       }
@@ -133,7 +124,11 @@
       const result = await checkAgentCli(targetAgent);
       dbg("wizard", "recheck result", { targetAgent, result });
       if (result.found) {
-        step = "auth_choice";
+        if (targetAgent === "codex") {
+          await completeOnboarding();
+        } else {
+          step = "auth_choice";
+        }
       }
     } catch (e) {
       dbgWarn("wizard", "recheck error", e);

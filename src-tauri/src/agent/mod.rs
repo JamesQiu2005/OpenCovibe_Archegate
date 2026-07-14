@@ -3,6 +3,7 @@ pub mod claude_protocol;
 pub mod claude_stream;
 pub mod codex_appserver;
 pub mod codex_control;
+pub mod codex_launcher;
 pub mod codex_parser;
 pub mod control;
 pub mod notify;

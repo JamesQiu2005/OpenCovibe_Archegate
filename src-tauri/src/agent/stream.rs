@@ -101,6 +101,12 @@ pub async fn run_agent(
     emitter: Option<Arc<BroadcastEmitter>>,
     extra_env: HashMap<String, String>,
 ) -> Result<(), String> {
+    let (command, args) = if agent == "codex" {
+        let launch = crate::agent::codex_launcher::build_codex_command(args);
+        (launch.program, launch.args)
+    } else {
+        (command, args)
+    };
     log::debug!(
         "[stream] run_agent: run_id={}, cmd={}, args={:?}, cwd={}, agent={}, has_emitter={}",
         run_id,
@@ -146,7 +152,7 @@ pub async fn run_agent(
     // own subprocess lookups succeed.
     let resolved = if std::path::Path::new(&command).is_absolute() {
         command.clone()
-    } else if is_codex {
+    } else if is_codex && command == "codex" {
         // Codex needs the candidate-list resolver (npm codex.cmd on Windows) — a bare
         // which_binary miss would fall back to "codex" and ENOENT on Windows.
         crate::agent::claude_stream::resolve_codex_path()

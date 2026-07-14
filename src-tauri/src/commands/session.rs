@@ -1955,9 +1955,6 @@ async fn spawn_codex_appserver_process(
 > {
     use tokio::process::Command;
 
-    let codex_bin = claude_stream::which_binary("codex")
-        .ok_or_else(|| "Codex CLI not found in PATH".to_string())?;
-
     let mut args: Vec<String> = vec![
         "app-server".into(),
         "--enable".into(),
@@ -1972,8 +1969,9 @@ async fn spawn_codex_appserver_process(
         args.extend(crate::agent::spawn::codex_provider_config_args(p));
     }
 
-    let mut cmd = Command::new(&codex_bin);
-    for a in &args {
+    let launch = crate::agent::codex_launcher::build_codex_command(args);
+    let mut cmd = Command::new(&launch.program);
+    for a in &launch.args {
         cmd.arg(a);
     }
     let path_env = claude_stream::augmented_path();
@@ -2588,9 +2586,6 @@ async fn codex_side_question(
     use tokio::io::{AsyncBufReadExt, BufReader};
     use tokio::process::Command;
 
-    let codex_bin = claude_stream::which_binary("codex")
-        .ok_or_else(|| "Codex CLI not found in PATH".to_string())?;
-
     let wrapped_question = format!(
         "The user is asking a side question. Answer it concisely. \
          This answer will NOT be added to the conversation history.\n\n{}",
@@ -2652,8 +2647,9 @@ async fn codex_side_question(
         codex_provider.as_ref().map(|p| &p.id)
     );
 
-    let mut cmd = Command::new(&codex_bin);
-    for arg in &codex_args {
+    let launch = crate::agent::codex_launcher::build_codex_command(codex_args);
+    let mut cmd = Command::new(&launch.program);
+    for arg in &launch.args {
         cmd.arg(arg);
     }
     let path_env = claude_stream::augmented_path();
