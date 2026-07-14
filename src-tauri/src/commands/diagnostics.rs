@@ -85,6 +85,36 @@ pub async fn check_codex_auth() -> Result<CodexAuthResult, String> {
 
     // Reuse check_agent_cli to detect installation
     let cli_check = check_agent_cli("codex".to_string()).await?;
+
+    // AIFlow supplies a short-lived credential only when it launches Codex. Checking the
+    // bare CLI's persistent login would incorrectly report the managed path as unauthenticated.
+    if let Some(aiflow) = crate::agent::claude_stream::which_binary("aiflow") {
+        use tokio::process::Command as TokioCommand;
+        let mut cmd = TokioCommand::new(aiflow);
+        cmd.args(["codex", "--dry-run"])
+            .env("PATH", augmented_path())
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::null())
+            .hide_console()
+            .kill_on_drop(true);
+        return match tokio::time::timeout(std::time::Duration::from_secs(12), cmd.status()).await {
+            Ok(Ok(status)) if status.success() => Ok(CodexAuthResult {
+                installed: true,
+                version: cli_check.version,
+                logged_in: true,
+                auth_method: Some("aiflow".to_string()),
+                status_text: Some("AIFlow-managed credential".to_string()),
+            }),
+            Ok(Ok(_)) | Ok(Err(_)) | Err(_) => Ok(CodexAuthResult {
+                installed: cli_check.found,
+                version: cli_check.version,
+                logged_in: false,
+                auth_method: Some("aiflow".to_string()),
+                status_text: Some("AIFlow launch context is unavailable".to_string()),
+            }),
+        };
+    }
+
     if !cli_check.found {
         log::debug!("[diagnostics] check_codex_auth: codex not installed");
         return Ok(CodexAuthResult {

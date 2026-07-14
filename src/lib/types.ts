@@ -519,7 +519,7 @@ export interface CodexAuthResult {
   installed: boolean;
   version?: string | null;
   logged_in: boolean;
-  auth_method?: "chatgpt" | "api_key" | "unknown" | null;
+  auth_method?: "aiflow" | "chatgpt" | "api_key" | "unknown" | null;
   status_text?: string | null;
 }
 

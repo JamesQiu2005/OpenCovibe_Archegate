@@ -66,7 +66,10 @@
     return !!authOverview?.app_has_credentials;
   });
 
-  let triggerLabel = $derived(mode === "oauth" ? t("auth_oauth") : t("auth_apiKey"));
+  let aiflowManaged = $derived(isCodex && codexStatus?.auth_method === "aiflow");
+  let triggerLabel = $derived(
+    aiflowManaged ? t("auth_aiflow") : mode === "oauth" ? t("auth_oauth") : t("auth_apiKey"),
+  );
   let dotColor = $derived(
     (mode === "oauth" ? oauthOk : apiKeyOk) ? "bg-emerald-500" : "bg-amber-500",
   );
@@ -246,7 +249,13 @@
           >
             {t("settings_auth_modeLabel")}
           </p>
-          {@render radioRow(mode === "oauth", t("auth_oauth"), oauthStatus, oauthOk, selectOAuth)}
+          {@render radioRow(
+            mode === "oauth",
+            aiflowManaged ? t("auth_aiflow") : t("auth_oauth"),
+            oauthStatus,
+            oauthOk,
+            selectOAuth,
+          )}
           {@render radioRow(mode === "api", t("auth_apiKey"), apiKeyStatus, apiKeyOk, selectApiKey)}
           <button
             class="flex w-full items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"

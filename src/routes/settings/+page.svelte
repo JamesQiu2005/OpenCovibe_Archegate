@@ -3268,6 +3268,8 @@
                             ? t("settings_codex_authChatGPT")
                             : codexStatus.auth_method === "api_key"
                               ? t("settings_codex_authApiKey")
+                              : codexStatus.auth_method === "aiflow"
+                                ? t("settings_codex_authAiFlow")
                               : t("settings_codex_authGeneric")}
                         </p>
                       </div>
