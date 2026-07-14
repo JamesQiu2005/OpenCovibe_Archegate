@@ -92,21 +92,18 @@ pub fn start_run(
             if agent == "claude" {
                 ExecutionPath::SessionActor
             } else if agent == "codex"
-                && !crate::agent::codex_launcher::aiflow_available()
                 && storage::settings::get_user_settings()
                     .codex_transport
                     .as_deref()
                     != Some("exec")
                 && crate::commands::session::codex_appserver_supported()
             {
-                // Local Codex defaults to app-server (bidirectional session_actor) so the
+                // Codex DEFAULTS to the app-server (bidirectional session_actor) path so the
                 // interactive tools (approvals, steer, fork/rewind/compact/goal, images, live
                 // command output) work out of the box — most of the Codex feature surface
                 // depends on it. Only an explicit "exec" setting opts out, OR an installed
                 // Codex CLI too old for `codex app-server --enable …` (the probe) — in which
                 // case we auto-fall back to the one-shot exec transport so the run still works.
-                // AIFlow-managed Codex always uses exec: its current app-server launch can
-                // initialize a thread but cannot authenticate a model turn.
                 ExecutionPath::SessionActor
             } else {
                 ExecutionPath::PipeExec
