@@ -77,7 +77,7 @@ pub fn run() {
     .format_timestamp_millis()
     .init();
 
-    log::info!("OpenCovibe Desktop starting");
+    log::info!("ArcheCovibe Desktop starting");
 
     // Set up Windows Job Object so child processes are killed on crash/force-quit.
     // No-op on non-Windows.

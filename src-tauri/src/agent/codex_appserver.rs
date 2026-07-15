@@ -270,7 +270,7 @@ impl SessionProtocol for CodexAppServer {
                 "clientInfo": {
                     "name": "opencovibe",
                     "version": env!("CARGO_PKG_VERSION"),
-                    "title": "OpenCovibe"
+                    "title": "ArcheCovibe"
                 }
             }
         });

@@ -1,13 +1,15 @@
 <p align="center">
-  <img src="static/logo-text.png" width="360" alt="OpenCovibe">
+  <img src="static/logo.png" width="112" alt="ArcheCovibe">
 </p>
+
+<h1 align="center">ArcheCovibe</h1>
 
 <p align="center">
   <strong>Local-first desktop app for AI-assisted vibe coding</strong>
 </p>
 
 <p align="center">
-  <a href="#why-opencovibe">Why</a> &middot;
+  <a href="#why-archecovibe">Why</a> &middot;
   <a href="#key-capabilities">Capabilities</a> &middot;
   <a href="#quick-start">Quick Start</a> &middot;
   <a href="#supported-providers">Providers</a> &middot;
@@ -22,17 +24,17 @@
 ---
 
 <p align="center">
-  <img src="static/screenshot.png" width="800" alt="OpenCovibe Screenshot">
+  <img src="static/screenshot.png" width="800" alt="ArcheCovibe Screenshot">
 </p>
 
-## Why OpenCovibe?
+## Why ArcheCovibe?
 
-AI coding CLIs like Claude Code are powerful, but they run inside a terminal. That means no persistent dashboard, no visual diff review, no cross-session history, and no multi-provider switching. OpenCovibe wraps these CLIs with a native desktop UI that adds the layers the terminal can't provide — while keeping all your data **stored locally**. (Remote model APIs require network access; the app itself has no cloud backend.)
+AI coding CLIs like Claude Code are powerful, but they run inside a terminal. That means no persistent dashboard, no visual diff review, no cross-session history, and no multi-provider switching. ArcheCovibe wraps these CLIs with a native desktop UI that adds the layers the terminal can't provide — while keeping all your data **stored locally**. (Remote model APIs require network access; the app itself has no cloud backend.)
 
-| Agent | Status |
-|-------|--------|
-| [Claude Code](https://github.com/anthropics/claude-code) | Supported |
-| [Codex](https://github.com/openai/codex) | Supported — interactive `app-server` mode (default) with `exec` fallback |
+| Agent                                                    | Status                                                                   |
+| -------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [Claude Code](https://github.com/anthropics/claude-code) | Supported                                                                |
+| [Codex](https://github.com/openai/codex)                 | Supported — interactive `app-server` mode (default) with `exec` fallback |
 
 **Platform status**: Currently developed and tested primarily on **macOS**. Windows and Linux builds are functional but have not been thoroughly tested for compatibility — contributions and bug reports are welcome.
 
@@ -42,28 +44,28 @@ AI coding CLIs like Claude Code are powerful, but they run inside a terminal. Th
 
 ### What the CLI doesn't give you
 
-| Capability | What OpenCovibe adds |
-|------------|---------------------|
-| **Visual Tool Cards** | Every tool call (Read, Edit, Bash, Grep, Write, WebFetch, …) rendered as an inline card with syntax-highlighted diffs, structured output, and one-click copy |
-| **Run History & Replay** | Browse all past sessions, full event replay, resume / fork from any point, soft-delete with recovery |
-| **Multi-Provider Switching** | Use Claude Code with 15+ API providers (DeepSeek, Kimi, Zhipu, Bailian, DouBao, MiniMax, OpenRouter, Ollama, …) — hot-switch without restarting |
-| **Remote Browser Access** | Embedded web server for browser-based access over LAN or HTTP tunnels (ngrok / cloudflared) |
-| **File Explorer** | Browse and edit project files with syntax highlighting, markdown preview, image preview, and git diff view |
-| **Memory Editor** | Create and edit CLAUDE.md, project-scoped and user-scoped memory files with live preview |
-| **Agent Management** | Visual editor to create, edit, and manage custom agent definitions (.md files) with form and source modes |
-| **Permission Rules** | Manage CLI permission allow/deny rules at user and project level with a visual rule editor |
-| **Usage Analytics** | Per-model token breakdown, cost tracking, daily heatmap, stacked model chart, session-level stats |
-| **Team Dashboard** | Read-only view into Claude Code multi-agent teams — task lists, teammate status, message flow |
-| **Activity Monitor** | Real-time hook event stream, tool activity timeline, file tracking panel, subagent tracking with nested tool cards |
-| **Plugin Marketplace** | Browse, install, and manage Claude Code plugins and skills from a visual marketplace |
-| **MCP Management** | Discover MCP servers, view per-server status, reconnect / toggle from a panel |
-| **Inline Permissions** | Rich permission review UI with batch Allow/Deny panel, CLI-suggested "Always Allow" rules, and AskUserQuestion rendering |
-| **CLI Session Import** | Discover and import existing Claude Code CLI sessions into OpenCovibe |
-| **Rewind** | Checkpoint and selectively revert file changes with dry-run preview |
-| **Remote Hosts** | Configure SSH hosts for remote CLI execution with key generation wizard and connectivity testing |
+| Capability                   | What ArcheCovibe adds                                                                                                                                          |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Visual Tool Cards**        | Every tool call (Read, Edit, Bash, Grep, Write, WebFetch, …) rendered as an inline card with syntax-highlighted diffs, structured output, and one-click copy   |
+| **Run History & Replay**     | Browse all past sessions, full event replay, resume / fork from any point, soft-delete with recovery                                                           |
+| **Multi-Provider Switching** | Use Claude Code with 15+ API providers (DeepSeek, Kimi, Zhipu, Bailian, DouBao, MiniMax, OpenRouter, Ollama, …) — hot-switch without restarting                |
+| **Remote Browser Access**    | Embedded web server for browser-based access over LAN or HTTP tunnels (ngrok / cloudflared)                                                                    |
+| **File Explorer**            | Browse and edit project files with syntax highlighting, markdown preview, image preview, and git diff view                                                     |
+| **Memory Editor**            | Create and edit CLAUDE.md, project-scoped and user-scoped memory files with live preview                                                                       |
+| **Agent Management**         | Visual editor to create, edit, and manage custom agent definitions (.md files) with form and source modes                                                      |
+| **Permission Rules**         | Manage CLI permission allow/deny rules at user and project level with a visual rule editor                                                                     |
+| **Usage Analytics**          | Per-model token breakdown, cost tracking, daily heatmap, stacked model chart, session-level stats                                                              |
+| **Team Dashboard**           | Read-only view into Claude Code multi-agent teams — task lists, teammate status, message flow                                                                  |
+| **Activity Monitor**         | Real-time hook event stream, tool activity timeline, file tracking panel, subagent tracking with nested tool cards                                             |
+| **Plugin Marketplace**       | Browse, install, and manage Claude Code plugins and skills from a visual marketplace                                                                           |
+| **MCP Management**           | Discover MCP servers, view per-server status, reconnect / toggle from a panel                                                                                  |
+| **Inline Permissions**       | Rich permission review UI with batch Allow/Deny panel, CLI-suggested "Always Allow" rules, and AskUserQuestion rendering                                       |
+| **CLI Session Import**       | Discover and import existing Claude Code CLI sessions into ArcheCovibe                                                                                         |
+| **Rewind**                   | Checkpoint and selectively revert file changes with dry-run preview                                                                                            |
+| **Remote Hosts**             | Configure SSH hosts for remote CLI execution with key generation wizard and connectivity testing                                                               |
 | **Preview & Element Picker** | Open a localhost preview in a companion window, interactively pick page elements, and insert structured context (DOM path, styles, HTML snippet) into the chat |
-| **Ralph Loop** | Auto-iterate the same prompt until a completion condition is met — hands-free coding with configurable max iterations |
-| **Doctor Diagnostics** | System health checks for CLI, platform, SSH, and proxy configuration |
+| **Ralph Loop**               | Auto-iterate the same prompt until a completion condition is met — hands-free coding with configurable max iterations                                          |
+| **Doctor Diagnostics**       | System health checks for CLI, platform, SSH, and proxy configuration                                                                                           |
 
 ### Features
 
@@ -84,15 +86,15 @@ AI coding CLIs like Claude Code are powerful, but they run inside a terminal. Th
 
 ### Option A: Download Pre-built Binary (macOS)
 
-Download the latest `.dmg` from [Releases](https://github.com/AnyiWang/OpenCovibe/releases) — universal binary, supports both Apple Silicon and Intel Macs.
+Download the latest `.dmg` from [Releases](https://github.com/JamesQiu2005/OpenCovibe_Archegate/releases) — universal binary, supports both Apple Silicon and Intel Macs.
 
 > **Note**: The app is not code-signed. On first launch, right-click and select "Open" to bypass macOS Gatekeeper.
 
 ### Option B: Automated Setup (macOS)
 
 ```bash
-git clone https://github.com/AnyiWang/OpenCovibe.git
-cd OpenCovibe
+git clone https://github.com/JamesQiu2005/OpenCovibe_Archegate.git
+cd OpenCovibe_Archegate
 ./scripts/setup.sh          # add --yes to skip confirmation prompts
 npm run tauri dev
 ```
@@ -107,6 +109,7 @@ The setup script detects missing dependencies (Xcode CLI Tools, Homebrew, Node.j
 - [Rust](https://rustup.rs/) >= 1.75
 
 **macOS:**
+
 ```bash
 xcode-select --install
 brew install node
@@ -114,6 +117,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 **Linux (Debian/Ubuntu):**
+
 ```bash
 sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file \
   libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
@@ -121,6 +125,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 **Windows:**
+
 ```powershell
 # Install Rust from https://rustup.rs
 # Install Node.js from https://nodejs.org
@@ -129,15 +134,15 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 **Build & Run:**
 
 ```bash
-git clone https://github.com/AnyiWang/OpenCovibe.git
-cd OpenCovibe
+git clone https://github.com/JamesQiu2005/OpenCovibe_Archegate.git
+cd OpenCovibe_Archegate
 npm install
 npm run tauri dev
 ```
 
 ### Setup Wizard
 
-On first launch, OpenCovibe guides you through:
+On first launch, ArcheCovibe guides you through:
 
 1. **CLI Detection** — Auto-detects Claude Code and Codex CLIs, offers installation if missing
 2. **Authentication** — OAuth login or API key for 15+ providers
@@ -149,41 +154,41 @@ You can re-run the wizard anytime from **Settings > General > Setup Wizard**.
 
 ### LLM Providers
 
-| Provider | Endpoint | Auth |
-|----------|----------|------|
-| Anthropic | Official API | API Key |
-| DeepSeek | `api.deepseek.com/anthropic` | Bearer |
-| Kimi (Moonshot) | `api.moonshot.cn/anthropic` | Bearer |
-| Kimi For Coding | `api.kimi.com/coding/` | Bearer |
-| Zhipu (智谱) | `open.bigmodel.cn/api/anthropic` | Bearer |
-| Zhipu (智谱 Intl) | `api.z.ai/api/anthropic` | Bearer |
-| Bailian (Coding Plan) | `coding.dashscope.aliyuncs.com/apps/anthropic` | Bearer |
-| Bailian (百炼 API) | `dashscope.aliyuncs.com/apps/anthropic` | Bearer |
-| DouBao (豆包) | `ark.cn-beijing.volces.com/api/coding` | Bearer |
-| MiniMax | `api.minimax.io/anthropic` | Bearer |
-| MiniMax (China) | `api.minimaxi.com/anthropic` | Bearer |
-| Xiaomi MiMo (小米) | `api.xiaomimimo.com/anthropic` | Bearer |
-| Xiaomi MiMo (Token Plan) | `token-plan-cn.xiaomimimo.com/anthropic` | Bearer |
-| Tencent Hunyuan (混元) | `api.hunyuan.cloud.tencent.com/anthropic` | Bearer |
-| SiliconFlow (硅基流动) | `api.siliconflow.com/` | Bearer |
+| Provider                 | Endpoint                                       | Auth    |
+| ------------------------ | ---------------------------------------------- | ------- |
+| Anthropic                | Official API                                   | API Key |
+| DeepSeek                 | `api.deepseek.com/anthropic`                   | Bearer  |
+| Kimi (Moonshot)          | `api.moonshot.cn/anthropic`                    | Bearer  |
+| Kimi For Coding          | `api.kimi.com/coding/`                         | Bearer  |
+| Zhipu (智谱)             | `open.bigmodel.cn/api/anthropic`               | Bearer  |
+| Zhipu (智谱 Intl)        | `api.z.ai/api/anthropic`                       | Bearer  |
+| Bailian (Coding Plan)    | `coding.dashscope.aliyuncs.com/apps/anthropic` | Bearer  |
+| Bailian (百炼 API)       | `dashscope.aliyuncs.com/apps/anthropic`        | Bearer  |
+| DouBao (豆包)            | `ark.cn-beijing.volces.com/api/coding`         | Bearer  |
+| MiniMax                  | `api.minimax.io/anthropic`                     | Bearer  |
+| MiniMax (China)          | `api.minimaxi.com/anthropic`                   | Bearer  |
+| Xiaomi MiMo (小米)       | `api.xiaomimimo.com/anthropic`                 | Bearer  |
+| Xiaomi MiMo (Token Plan) | `token-plan-cn.xiaomimimo.com/anthropic`       | Bearer  |
+| Tencent Hunyuan (混元)   | `api.hunyuan.cloud.tencent.com/anthropic`      | Bearer  |
+| SiliconFlow (硅基流动)   | `api.siliconflow.com/`                         | Bearer  |
 
 ### API Gateway
 
-| Platform | Endpoint | Auth |
-|----------|----------|------|
-| Vercel AI Gateway | `ai-gateway.vercel.sh` | Bearer |
-| OpenRouter | `openrouter.ai/api` | Bearer |
-| AiHubMix | `aihubmix.com` | Bearer |
-| ZenMux | `zenmux.ai/api/anthropic` | Bearer |
+| Platform          | Endpoint                  | Auth   |
+| ----------------- | ------------------------- | ------ |
+| Vercel AI Gateway | `ai-gateway.vercel.sh`    | Bearer |
+| OpenRouter        | `openrouter.ai/api`       | Bearer |
+| AiHubMix          | `aihubmix.com`            | Bearer |
+| ZenMux            | `zenmux.ai/api/anthropic` | Bearer |
 
 ### Local
 
-| Platform | Endpoint |
-|----------|----------|
-| Ollama | `localhost:11434` |
-| [CC Switch](https://github.com/farion1231/cc-switch) | `localhost:15721` |
-| [Claude Code Router](https://github.com/musistudio/claude-code-router) | `localhost:3456` |
-| Custom | Any Anthropic-compatible endpoint |
+| Platform                                                               | Endpoint                          |
+| ---------------------------------------------------------------------- | --------------------------------- |
+| Ollama                                                                 | `localhost:11434`                 |
+| [CC Switch](https://github.com/farion1231/cc-switch)                   | `localhost:15721`                 |
+| [Claude Code Router](https://github.com/musistudio/claude-code-router) | `localhost:3456`                  |
+| Custom                                                                 | Any Anthropic-compatible endpoint |
 
 ## Architecture
 
@@ -193,15 +198,15 @@ You can re-run the wizard anytime from **Settings > General > Setup Wizard**.
 
 **Tech Stack:**
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | [Tauri v2](https://v2.tauri.app/) (Rust backend + WebView) |
-| Frontend | [Svelte 5](https://svelte.dev/) + [SvelteKit](https://svelte.dev/docs/kit/) (adapter-static) |
-| Styling | [Tailwind CSS](https://tailwindcss.com/) v3 + CSS variables |
-| Terminal | [xterm.js](https://xtermjs.org/) |
-| Markdown | [marked](https://marked.js.org/) + [highlight.js](https://highlightjs.org/) + [DOMPurify](https://github.com/cure53/DOMPurify) |
-| i18n | Custom lightweight runtime (en + zh-CN) |
-| Testing | [Vitest](https://vitest.dev/) |
+| Layer     | Technology                                                                                                                     |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Framework | [Tauri v2](https://v2.tauri.app/) (Rust backend + WebView)                                                                     |
+| Frontend  | [Svelte 5](https://svelte.dev/) + [SvelteKit](https://svelte.dev/docs/kit/) (adapter-static)                                   |
+| Styling   | [Tailwind CSS](https://tailwindcss.com/) v3 + CSS variables                                                                    |
+| Terminal  | [xterm.js](https://xtermjs.org/)                                                                                               |
+| Markdown  | [marked](https://marked.js.org/) + [highlight.js](https://highlightjs.org/) + [DOMPurify](https://github.com/cure53/DOMPurify) |
+| i18n      | Custom lightweight runtime (en + zh-CN)                                                                                        |
+| Testing   | [Vitest](https://vitest.dev/)                                                                                                  |
 
 **Agent Communication:**
 
@@ -238,10 +243,10 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for de
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=AnyiWang/OpenCovibe&type=Date)](https://star-history.com/#AnyiWang/OpenCovibe&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=JamesQiu2005/OpenCovibe_Archegate&type=Date)](https://star-history.com/#JamesQiu2005/OpenCovibe_Archegate&Date)
 
 ## License
 
 Licensed under the [Apache License 2.0](LICENSE).
 
-Copyright 2025-2026 OpenCovibe Contributors.
+Copyright 2025-2026 ArcheCovibe Contributors.

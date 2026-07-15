@@ -307,7 +307,7 @@ export const VIRTUAL_COMMANDS: CliCommand[] = [
   },
   {
     name: "feedback",
-    description: "Open the OpenCovibe issue tracker",
+    description: "Open the ArcheCovibe issue tracker",
     aliases: [],
     _virtual: true,
     _action: "open-feedback",

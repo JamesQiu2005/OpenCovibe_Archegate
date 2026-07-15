@@ -4,7 +4,8 @@ use std::time::Duration;
 
 // ── Constants ──
 
-const GITHUB_API_URL: &str = "https://api.github.com/repos/AnyiWang/OpenCovibe/releases/latest";
+const GITHUB_API_URL: &str =
+    "https://api.github.com/repos/JamesQiu2005/OpenCovibe_Archegate/releases/latest";
 
 // ── HTTP client (reuse across requests) ──
 
@@ -12,7 +13,7 @@ static CLIENT: LazyLock<Client> = LazyLock::new(|| {
     Client::builder()
         .timeout(Duration::from_secs(15))
         .connect_timeout(Duration::from_secs(10))
-        .user_agent(format!("OpenCovibe/{}", env!("CARGO_PKG_VERSION")))
+        .user_agent(format!("ArcheCovibe/{}", env!("CARGO_PKG_VERSION")))
         .build()
         .unwrap_or_default()
 });

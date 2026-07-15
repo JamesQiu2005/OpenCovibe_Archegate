@@ -110,7 +110,7 @@ pub async fn get_codex_models(
             "clientInfo": {
                 "name": "opencovibe",
                 "version": env!("CARGO_PKG_VERSION"),
-                "title": "OpenCovibe"
+                "title": "ArcheCovibe"
             }
         }
     });

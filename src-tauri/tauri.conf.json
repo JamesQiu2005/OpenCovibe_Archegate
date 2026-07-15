@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/nicegui/nicegui/main/.github/schemas/tauri-v2.json",
-  "productName": "OpenCovibe",
+  "productName": "ArcheCovibe",
   "version": "0.2.6",
   "identifier": "com.opencovibe.desktop",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "OpenCovibe",
+        "title": "ArcheCovibe",
         "width": 1280,
         "height": 800,
         "minWidth": 900,
@@ -39,7 +39,7 @@
     ],
     "category": "DeveloperTool",
     "shortDescription": "AI-assisted vibe coding desktop app",
-    "longDescription": "OpenCovibe wraps AI coding CLIs (Claude Code, Codex) with a visual chat interface, run management, and activity monitoring. Local-first, no cloud required.",
+    "longDescription": "ArcheCovibe wraps AI coding CLIs (Claude Code, Codex) with a visual chat interface, run management, and activity monitoring. Local-first, no cloud required.",
     "macOS": {
       "entitlements": "entitlements.plist",
       "minimumSystemVersion": "13.0"

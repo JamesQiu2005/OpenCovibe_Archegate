@@ -108,7 +108,7 @@
   let sidebarOpen = $state(true);
   let projectCwd = $state("");
   type ThemeMode = "light" | "dark" | "system";
-  type ColorScheme = "warm" | "neutral";
+  type ColorScheme = "brand" | "neutral";
 
   function getInitialTheme(): ThemeMode {
     if (typeof window === "undefined") return "dark";
@@ -118,9 +118,9 @@
   }
 
   function getInitialScheme(): ColorScheme {
-    if (typeof window === "undefined") return "warm";
+    if (typeof window === "undefined") return "brand";
     const saved = localStorage.getItem("ocv:colorScheme");
-    return saved === "neutral" ? "neutral" : "warm";
+    return saved === "neutral" ? "neutral" : "brand";
   }
 
   let themeMode = $state<ThemeMode>(getInitialTheme());
@@ -1189,7 +1189,7 @@
   }
 
   function cycleScheme() {
-    colorScheme = colorScheme === "warm" ? "neutral" : "warm";
+    colorScheme = colorScheme === "brand" ? "neutral" : "brand";
     dbg("layout", "color scheme cycled", { colorScheme });
   }
 
@@ -1338,11 +1338,11 @@
     <aside class="flex shrink-0 bg-sidebar text-sidebar-foreground transition-all duration-200">
       <!-- A. Icon Rail -->
       <div
-        class="flex w-[44px] flex-col items-center border-r border-sidebar-border bg-black/[0.03] dark:bg-black/20"
+        class="flex w-[44px] flex-col items-center border-r border-sidebar-border bg-sidebar-accent/35"
       >
-        <!-- Rail logo (OC) -->
+        <!-- Archebase brand mark -->
         <div class="flex h-14 w-full items-center justify-center border-b border-sidebar-border">
-          <img src="/logo.png?v=2" alt="OC" class="h-8 w-8 rounded-lg" />
+          <img src="/logo.png?v=3" alt="Archebase" class="h-8 w-8 rounded-md" />
         </div>
 
         <!-- Rail nav icons -->
@@ -1452,7 +1452,7 @@
             <button
               class="text-xs text-muted-foreground hover:text-muted-foreground transition-colors cursor-pointer"
               onclick={() => (showAbout = true)}
-              title="About OpenCovibe">v0.1</button
+              title="About ArcheCovibe">v0.1</button
             >
           </div>
           <div class="relative mx-auto mb-0.5">
@@ -1548,7 +1548,7 @@
           <button
             class="flex h-9 w-9 items-center justify-center rounded-md text-sidebar-foreground hover:bg-sidebar-accent/50 transition-colors duration-150"
             onclick={cycleScheme}
-            title={colorScheme === "warm"
+            title={colorScheme === "brand"
               ? t("layout_schemeTitle_warm")
               : t("layout_schemeTitle_neutral")}
           >

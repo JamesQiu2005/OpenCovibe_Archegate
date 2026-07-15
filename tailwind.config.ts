@@ -7,6 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: {
+          navy: "hsl(var(--brand-navy))",
+          cyan: "hsl(var(--brand-cyan))",
+          gold: "hsl(var(--brand-gold))",
+          blue: "hsl(var(--brand-blue))",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {

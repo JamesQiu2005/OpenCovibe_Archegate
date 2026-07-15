@@ -3414,7 +3414,7 @@
     } else if (action === "open-feedback") {
       // Source-of-truth: matches package.json `bugs.url`. If the repo URL ever
       // changes, update both this constant AND package.json.
-      const url = "https://github.com/AnyiWang/OpenCovibe/issues";
+      const url = "https://github.com/JamesQiu2005/OpenCovibe_Archegate/issues";
       dbg("chat", "open-feedback", { url });
       try {
         const { open } = await import("@tauri-apps/plugin-shell");
@@ -4765,7 +4765,11 @@
             <div class="flex h-full items-center justify-center">
               <div class="flex flex-col items-center max-w-sm">
                 <div class="text-center animate-slide-up">
-                  <img src="/logo.png?v=2" alt="OC" class="mx-auto mb-4 h-12 w-12 rounded-2xl" />
+                  <img
+                    src="/logo.png?v=3"
+                    alt="Archebase"
+                    class="mx-auto mb-4 h-12 w-12 rounded-lg"
+                  />
                   <h2 class="text-lg font-semibold text-primary mb-1">{t("layout_appName")}</h2>
                   {#if codexWarning}
                     <p class="text-amber-500 text-sm mb-3 px-2">{codexWarning}</p>
@@ -5427,7 +5431,7 @@
         <!-- CLI mode: welcome state -->
         <div class="flex h-full items-center justify-center">
           <div class="text-center max-w-md animate-slide-up">
-            <img src="/logo.png?v=2" alt="OC" class="mx-auto mb-4 h-12 w-12 rounded-2xl" />
+            <img src="/logo.png?v=3" alt="Archebase" class="mx-auto mb-4 h-12 w-12 rounded-lg" />
             <h2 class="text-lg font-semibold text-primary mb-2">{t("layout_appName")}</h2>
             {#if codexWarning}
               <p class="text-amber-500 text-sm mb-3 px-2">{codexWarning}</p>
